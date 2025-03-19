@@ -1,4 +1,3 @@
-// app/(tabs)/logs.tsx
 import React, { useState, useEffect, useCallback } from 'react';
 import { StyleSheet, View, Text, FlatList, RefreshControl, Alert } from 'react-native';
 import { useFocusEffect } from 'expo-router';
@@ -10,12 +9,12 @@ import { useDataStore } from '../contexts/DataStoreContext'; // Consolidated con
 import { LogEntry } from '../../utils/DataStore'; // Import from DataStore
 
 export default function LogsPage() {
-  const [logs, setLogs] = useState<LogEntry[]>([]);
-  const [refreshing, setRefreshing] = useState(false);
-  const { store, getDeviceLogs, clearDeviceLogs } = useDataStore();
-  const activeDevice = store.devices.find(d => d.id === store.globalSettings.activeDeviceId);
+    const [logs, setLogs] = useState<LogEntry[]>([]);
+    const [refreshing, setRefreshing] = useState(false);
+    const { store, getDeviceLogs, clearDeviceLogs } = useDataStore();
+    const activeDevice = store.devices.find(d => d.id === store.globalSettings.activeDeviceId);
 
-    const loadLogs = useCallback(async () => {
+     const loadLogs = useCallback(async () => {
         if (!activeDevice) return;
 
         try {
@@ -172,11 +171,14 @@ const styles = StyleSheet.create({
   },
   logItemContent: {
     marginLeft: spacing.xs,
+      flexDirection: 'row',
   },
   logHeader: {
-    flexDirection: 'row',
+    flexDirection: 'column',
     justifyContent: 'space-between',
     marginBottom: spacing.xs,
+      marginLeft: spacing.sm,
+      flex: 1
   },
   logAction: {
     fontSize: 16,

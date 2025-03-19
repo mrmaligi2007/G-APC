@@ -1,7 +1,7 @@
 // app/hooks/useAuthorizedUsers.ts
 import { useState, useEffect, useCallback } from 'react';
 import { useDataStore } from '../contexts/DataStoreContext';
-import { User } from '../utils/DataStore';
+import { User } from '../utils/DataStore';  // Import User from DataStore
 
 export const useAuthorizedUsers = (deviceId?: string) => {
   const { store, getDeviceUsers, addUser, updateUser, authorizeUserForDevice, deleteUser, deauthorizeUserForDevice } = useDataStore();
